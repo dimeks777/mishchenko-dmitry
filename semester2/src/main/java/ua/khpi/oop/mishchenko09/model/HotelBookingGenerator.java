@@ -2,11 +2,7 @@ package ua.khpi.oop.mishchenko09.model;
 
 import ua.khpi.oop.mishchenko09.container.ForwardLinkedList;
 import ua.khpi.oop.mishchenko09.io.HotelBookingToXML;
-import ua.khpi.oop.mishchenko09.io.HotelBookingView;
-import ua.khpi.oop.mishchenko09.io.View;
-
 import java.time.LocalDate;
-import java.time.Month;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;

@@ -5,7 +5,6 @@ import ua.khpi.oop.mishchenko09.io.HotelBookingGUI;
 import ua.khpi.oop.mishchenko09.io.HotelBookingInput;
 
 import java.io.PrintStream;
-import java.time.Duration;
 import java.time.Period;
 import java.util.Comparator;
 import java.util.Scanner;
