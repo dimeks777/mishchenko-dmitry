@@ -1,4 +1,4 @@
-package ua.khpi.oop.mishchenko13;
+package ua.khpi.oop.mishchenko13.model;
 
 
 public class AppStates {

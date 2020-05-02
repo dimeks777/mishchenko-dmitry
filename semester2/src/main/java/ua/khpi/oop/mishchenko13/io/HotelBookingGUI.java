@@ -1,4 +1,4 @@
-package ua.khpi.oop.mishchenko13;
+package ua.khpi.oop.mishchenko13.io;
 
 import ua.khpi.oop.mishchenko09.io.GUI;
 

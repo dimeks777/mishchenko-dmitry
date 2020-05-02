@@ -1,4 +1,4 @@
-package ua.khpi.oop.mishchenko13;
+package ua.khpi.oop.mishchenko13.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,6 +7,9 @@ import ua.khpi.oop.mishchenko09.io.*;
 import ua.khpi.oop.mishchenko09.model.HotelBooking;
 import ua.khpi.oop.mishchenko09.model.HotelBookingGenerator;
 import ua.khpi.oop.mishchenko09.model.HotelBookingSortingComparators;
+import ua.khpi.oop.mishchenko13.io.HotelBookingGUI;
+import ua.khpi.oop.mishchenko13.model.AppStates;
+import ua.khpi.oop.mishchenko13.model.MultiThreadingStrategy;
 
 import java.io.InputStream;
 import java.io.PrintStream;

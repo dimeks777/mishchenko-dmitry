@@ -1,5 +1,7 @@
 package ua.khpi.oop.mishchenko13;
 
+import ua.khpi.oop.mishchenko13.controller.Loop;
+
 public class Runner {
 
     public static void main(String[] args) {
