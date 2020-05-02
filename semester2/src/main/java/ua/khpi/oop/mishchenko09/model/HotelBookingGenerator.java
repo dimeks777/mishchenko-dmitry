@@ -1,10 +1,15 @@
 package ua.khpi.oop.mishchenko09.model;
 
 import ua.khpi.oop.mishchenko09.container.ForwardLinkedList;
+import ua.khpi.oop.mishchenko09.io.HotelBookingInput;
 import ua.khpi.oop.mishchenko09.io.HotelBookingToXML;
+
+import java.io.PrintStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class HotelBookingGenerator {
@@ -14,9 +19,9 @@ public class HotelBookingGenerator {
         ForwardLinkedList<HotelBooking> list = new ForwardLinkedList<>();
         String[] classes = {"econom", "default", "lux"};
         String[] reasons = {"travelling", "business trip", "hiding", "business meeting"};
-        String[] surnames = {"Smith","Johnson","Williams","Brown","Davis","Miller","Wilson","Moore","Taylor","Anderson","Thomas","Jackson","Harris","Martin","Thompson","Martinez","Robinson","Clark"};
-        String[] names = {"Oliver","Jack","Harry","Jacob","Charlie","Thomas","George","Oscar","James","William","John","Robert","Michael","David","Richard","Joseph","Charles","Mason"};
-        String[] patronymics = {"Aalbers","Aarts","Babayev","Beatson","Ben-David","Clowers","Davidov","Ellison","Enríquez","Fedorovich","Fernandes","Georgiev","Hermans","Ibragimov","Ivanenko","Jakobsen","Lajovic","Karlson"};
+        String[] surnames = {"Smith", "Johnson", "Williams", "Brown", "Davis", "Miller", "Wilson", "Moore", "Taylor", "Anderson", "Thomas", "Jackson", "Harris", "Martin", "Thompson", "Martinez", "Robinson", "Clark"};
+        String[] names = {"Oliver", "Jack", "Harry", "Jacob", "Charlie", "Thomas", "George", "Oscar", "James", "William", "John", "Robert", "Michael", "David", "Richard", "Joseph", "Charles", "Mason"};
+        String[] patronymics = {"Aalbers", "Aarts", "Babayev", "Beatson", "Ben-David", "Clowers", "Davidov", "Ellison", "Enríquez", "Fedorovich", "Fernandes", "Georgiev", "Hermans", "Ibragimov", "Ivanenko", "Jakobsen", "Lajovic", "Karlson"};
         for (int i = 0; i < size; i++) {
             String passportId = String.valueOf((int) ((Math.random() * (999_999_999 - 100_000_000)) + 100_000_000));
             String surname = surnames[random.nextInt(surnames.length)];
@@ -41,8 +46,13 @@ public class HotelBookingGenerator {
             int countOfPlaces = (int) (Math.random() * (9 - 1) + 1);
             int sz = (int) (Math.random() * (reasons.length - 1) + 1);
             ArrayList<String> settlementReason = new ArrayList<>();
+            HashSet<Integer> inputReasons = new HashSet<>();
             for (int j = 0; j < sz; j++) {
-                settlementReason.add(reasons[random.nextInt(reasons.length)]);
+                int index = random.nextInt(reasons.length);
+                if (j == 0) {
+                    inputReasons.add(index);
+                    settlementReason.add(reasons[index]);
+                } else if (inputReasons.add(index)) settlementReason.add(reasons[index]);
             }
             list.add(new HotelBooking(new Person(passportId, surname, name, patronymic, dayOfBirth), settlementDate, evictionDate,
                     new HotelRoom(numberOfRoom, classOfRoom, countOfPlaces), settlementReason));
@@ -50,8 +60,13 @@ public class HotelBookingGenerator {
         return list;
     }
 
-    public static void main(String[] args) {
+    public static void generateAndWrite() {
         ForwardLinkedList<HotelBooking> list = generateList(10000);
-        new HotelBookingToXML().write(list,HotelBookingGenerator.class.getResource("/Generated.xml").getPath());
+        new HotelBookingToXML().write(list, HotelBookingGenerator.class.getResource("/Generated.xml").getPath());
+    }
+
+    public static ForwardLinkedList<HotelBooking> generator(Scanner scanner, PrintStream printStream) {
+        printStream.println("Enter count of elements to generate");
+        return generateList(HotelBookingInput.inInt(scanner));
     }
 }
