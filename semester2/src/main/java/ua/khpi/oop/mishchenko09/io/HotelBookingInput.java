@@ -173,7 +173,7 @@ public class HotelBookingInput {
         return value;
     }
 
-    private static ClassOfRoom inClass(Scanner scanner) {
+    public static ClassOfRoom inClass(Scanner scanner) {
         ClassOfRoom classOfRoom = null;
         while (classOfRoom == null) {
             try {

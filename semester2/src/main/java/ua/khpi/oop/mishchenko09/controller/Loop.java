@@ -87,8 +87,6 @@ public class Loop {
 
         } while (!(scan.equals(String.valueOf(AppStates.EXIT))));
         logger.info("End");
-        Period.between(LocalDate.of(2020, 4, 25), LocalDate.of(2020, 4, 28));
-
     }
 
     private boolean checkAutoModeArg(String[] args) {

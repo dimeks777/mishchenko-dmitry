@@ -1,4 +1,4 @@
-package ua.khpi.oop.mishchenko14.controller;
+package ua.khpi.oop.mishchenko15.io;
 
 import ua.khpi.oop.mishchenko09.io.GUI;
 
@@ -22,7 +22,7 @@ public class HotelBookingGUI implements GUI {
         output.println("07. Get list as string");
         output.println("08. Get list as array");
         output.println("09. Sort");
-        output.println("10. Search by reason");
+        output.println("10. Search");
         output.println("11. Thread demo");
         output.println("12. Parallel vs consequential demo");
         output.println("13. Generate random values");
@@ -58,5 +58,13 @@ public class HotelBookingGUI implements GUI {
         output.println("1. By living duration");
         output.println("2. By class of room");
         output.println("3. By count of places");
+    }
+
+    public void searchMenu(){
+        output.println("Choose searching criteria");
+        output.println("1. By surname");
+        output.println("2. By age");
+        output.println("3. By class of room");
+        output.println("4. By settlement reason");
     }
 }

@@ -1,23 +1,22 @@
-package ua.khpi.oop.mishchenko14.controller;
+package ua.khpi.oop.mishchenko15.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ua.khpi.oop.mishchenko09.container.ForwardLinkedList;
 import ua.khpi.oop.mishchenko09.io.HotelBookingInput;
-import ua.khpi.oop.mishchenko09.io.HotelBookingToXML;
-import ua.khpi.oop.mishchenko09.io.HotelBookingView;
-import ua.khpi.oop.mishchenko09.io.SerializationInterface;
-import ua.khpi.oop.mishchenko09.model.HotelBooking;
-import ua.khpi.oop.mishchenko09.model.HotelBookingGenerator;
-import ua.khpi.oop.mishchenko09.model.HotelBookingSortingComparators;
-import ua.khpi.oop.mishchenko14.io.HotelBookingGUI;
+import ua.khpi.oop.mishchenko15.model.HotelBookingGenerator;
 import ua.khpi.oop.mishchenko14.model.AppStates;
-import ua.khpi.oop.mishchenko14.model.MultiThreadingStrategy;
+import ua.khpi.oop.mishchenko09.model.HotelBooking;
+import ua.khpi.oop.mishchenko15.io.HotelBookingGUI;
+import ua.khpi.oop.mishchenko15.model.MultiThreadingStrategy;
+import ua.khpi.oop.mishchenko15.io.HotelBookingToXML;
+import ua.khpi.oop.mishchenko15.io.HotelBookingView;
+import ua.khpi.oop.mishchenko15.io.SerializationInterface;
+import ua.khpi.oop.mishchenko15.model.HotelBookingSortingComparators;
+import ua.khpi.oop.mishchenko15.model.HotelBookingSearchMaster;
 
 import java.io.InputStream;
 import java.io.PrintStream;
-import java.time.LocalDate;
-import java.time.Period;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Loop {
@@ -33,7 +32,7 @@ public class Loop {
 
     public void loop(String[] args) {
         logger.info("App started");
-        ForwardLinkedList<HotelBooking> clientList = new ForwardLinkedList<>();
+        ArrayList<HotelBooking> clientList = new ArrayList<>();
         if (checkAutoModeArg(args)) {
             clientList = autoLoad();
         }
@@ -60,7 +59,7 @@ public class Loop {
                     clientList.add(HotelBookingInput.inputForm(scanner, output));
                     break;
                 case AppStates.DELETE:
-                    clientList.deleteByIndex(HotelBookingInput.deleteForm(scanner, output));
+                    clientList.remove(HotelBookingInput.deleteForm(scanner, output));
                     break;
                 case AppStates.DELETE_ALL:
                     clientList.clear();
@@ -68,30 +67,39 @@ public class Loop {
                 case AppStates.SHOW_ALL:
                     view.printView(output);
                     break;
+
                 case AppStates.SERIALIZATION_SAVE:
                     SerializationInterface.save(output, scanner, clientList);
                     break;
+
                 case AppStates.SERIALIZATION_LOAD:
                     clientList = SerializationInterface.load(output, scanner);
                     break;
+
                 case AppStates.TO_STRING:
                     output.println(clientList);
                     break;
+
                 case AppStates.TO_ARRAY:
-                    view.printArray(clientList.toArray(new HotelBooking[clientList.size()]), output);
+                    view.printArray(clientList.toArray(new HotelBooking[0]), output);
                     break;
+
                 case AppStates.SORT:
                     HotelBookingSortingComparators.sorting(clientList, scanner, output);
                     break;
+
                 case AppStates.SEARCH:
-                    view.searchBySettlementReason(output, scanner);
+                    HotelBookingSearchMaster.search(clientList, output, scanner);
                     break;
+
                 case AppStates.MULTI_THREADING:
                     new MultiThreadingStrategy(clientList, output, scanner).start();
                     break;
+
                 case AppStates.COMPARE_MULTITHREADING:
                     new MultiThreadingStrategy(clientList, output, scanner).compare();
                     break;
+
                 case AppStates.GENERATE:
                     clientList = HotelBookingGenerator.generator(scanner, output);
             }
@@ -112,8 +120,8 @@ public class Loop {
         return false;
     }
 
-    private ForwardLinkedList<HotelBooking> autoLoad() {
-        return new HotelBookingToXML().read(Loop.class.getResource("/Generated.xml").getPath());
+    private ArrayList<HotelBooking> autoLoad() {
+        return new HotelBookingToXML().read(Loop.class.getResource("/gen15.xml").getPath());
     }
 
 
