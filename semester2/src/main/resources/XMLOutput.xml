@@ -231,7 +231,7 @@
  <object class="ua.khpi.oop.mishchenko09.model.HotelBooking">
   <void property="evictionDate">
    <object class="java.time.LocalDate" method="parse">
-    <string>2020-04-28</string>
+    <string>2020-05-15</string>
    </object>
   </void>
   <void property="hotelRoom">
@@ -270,7 +270,7 @@
   </void>
   <void property="settlementDate">
    <object class="java.time.LocalDate" method="parse">
-    <string>2020-04-25</string>
+    <string>2020-05-10</string>
    </object>
   </void>
   <void property="settlementReasons">
