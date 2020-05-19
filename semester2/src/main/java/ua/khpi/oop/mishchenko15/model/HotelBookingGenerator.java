@@ -35,7 +35,6 @@ public class HotelBookingGenerator {
             maxDay = LocalDate.now().toEpochDay();
             randomDay = ThreadLocalRandom.current().nextLong(minDay, maxDay);
             LocalDate settlementDate = LocalDate.ofEpochDay(randomDay);
-            randomDay = ThreadLocalRandom.current().nextLong(minDay, maxDay);
             LocalDate evictionDate = LocalDate.ofEpochDay(randomDay).plusDays((long) (Math.random() * (30 - 1) + 1));
             int numberOfRoom = (int) (Math.random() * (9999 - 101) + 101);
             ClassOfRoom classOfRoom = null;

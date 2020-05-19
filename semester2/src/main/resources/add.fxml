@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="531.0" prefWidth="765.0" style="-fx-background-color: #2E3348;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ua.khpi.oop.mishchenko16.SignUpController">
+    <children>
+        <AnchorPane layoutX="1.0" layoutY="90.0" prefHeight="439.0" prefWidth="764.0" style="-fx-background-color: #fafafa;">
+            <children>
+                <TextField fx:id="passportIdField" layoutX="51.0" layoutY="32.0" prefHeight="39.0" prefWidth="119.0" promptText="Passport ID" style="-fx-background-color: #fafafa; -fx-border-color: silver; -fx-border-radius: 5;" />
+                <Button fx:id="signUpButton" layoutX="286.0" layoutY="372.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="192.0" style="-fx-background-color: #F39C63;" text="Sign Up" textFill="WHITE">
+                    <font>
+                        <Font name="Arial Bold Italic" size="18.0" />
+                    </font>
+                </Button>
+            <TextField fx:id="surnameField" layoutX="51.0" layoutY="83.0" prefHeight="39.0" prefWidth="307.0" promptText="Surname" style="-fx-background-color: #fafafa; -fx-border-color: silver; -fx-border-radius: 5;" />
+            <TextField fx:id="nameField" layoutX="51.0" layoutY="137.0" prefHeight="39.0" prefWidth="307.0" promptText="Name" style="-fx-background-color: #fafafa; -fx-border-color: silver; -fx-border-radius: 5;" />
+            <TextField fx:id="numberOfRoomField" layoutX="406.0" layoutY="32.0" prefHeight="39.0" prefWidth="110.0" promptText="Number of room" style="-fx-background-color: #fafafa; -fx-border-color: silver; -fx-border-radius: 5;" />
+            <TextField fx:id="classOfRoomField" layoutX="406.0" layoutY="83.0" prefHeight="39.0" prefWidth="307.0" promptText="Class of room" style="-fx-background-color: #fafafa; -fx-border-color: silver; -fx-border-radius: 5;" />
+            <TextField fx:id="countOfPlacesField" layoutX="540.0" layoutY="32.0" prefHeight="39.0" prefWidth="173.0" promptText="Count of places" style="-fx-background-color: #fafafa; -fx-border-color: silver; -fx-border-radius: 5;" />
+            <TextField fx:id="patronymicField" layoutX="51.0" layoutY="190.0" prefHeight="39.0" prefWidth="307.0" promptText="Patronymic" style="-fx-background-color: #fafafa; -fx-border-color: silver; -fx-border-radius: 5;" />
+            <TextField fx:id="settlementDateField" layoutX="51.0" layoutY="245.0" prefHeight="39.0" prefWidth="307.0" promptText="Settlement date" style="-fx-background-color: #fafafa; -fx-border-color: silver; -fx-border-radius: 5;" />
+            <TextField fx:id="dayOfBirthField" layoutX="185.0" layoutY="32.0" prefHeight="39.0" prefWidth="173.0" promptText="Day of birth" style="-fx-background-color: #fafafa; -fx-border-color: silver; -fx-border-radius: 5;" />
+            <TextField fx:id="evictionDateField" layoutX="51.0" layoutY="300.0" prefHeight="39.0" prefWidth="307.0" promptText="Eviction date" style="-fx-background-color: #fafafa; -fx-border-color: silver; -fx-border-radius: 5;" />
+            <Label layoutX="406.0" layoutY="137.0" prefHeight="17.0" prefWidth="307.0" text="Divide by &quot;;&quot;" />
+            <TextArea fx:id="settlementReasonsField" layoutX="406.0" layoutY="161.0" prefHeight="179.0" prefWidth="307.0" promptText="Settlement reasons" />
+            <Label layoutX="189.0" layoutY="14.0" prefHeight="17.0" prefWidth="165.0" text="dd-MM-yyyy" />
+            <Label layoutX="58.0" layoutY="229.0" prefHeight="17.0" prefWidth="165.0" text="dd-MM-yyyy" />
+            <Label layoutX="58.0" layoutY="284.0" prefHeight="17.0" prefWidth="165.0" text="dd-MM-yyyy" />
+            </children>
+        </AnchorPane>
+        <Label layoutX="206.0" layoutY="14.0" prefHeight="77.0" prefWidth="353.0" text="   Registration" textAlignment="CENTER" textFill="WHITE">
+            <font>
+                <Font name="Arial Bold Italic" size="48.0" />
+            </font>
+        </Label>
+    </children>
+</AnchorPane>
