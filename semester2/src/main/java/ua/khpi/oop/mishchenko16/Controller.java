@@ -51,7 +51,7 @@ public class Controller {
                 stage.showAndWait();
 
             } else {
-                Warning.showAlertWithHeaderText("Э");
+                Warning.showErrorWithHeaderText("Э");
                 System.out.println("Incorrect user or password");
             }
         });

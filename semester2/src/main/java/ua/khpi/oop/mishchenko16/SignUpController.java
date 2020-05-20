@@ -1,9 +1,7 @@
 package ua.khpi.oop.mishchenko16;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import ua.khpi.oop.mishchenko09.io.RegexCheck;
 import ua.khpi.oop.mishchenko09.model.ClassOfRoom;
 import ua.khpi.oop.mishchenko09.model.HotelBooking;
@@ -13,12 +11,9 @@ import ua.khpi.oop.mishchenko09.model.Person;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class SignUpController {
-    public static final DateTimeFormatter pattern = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-
+    private static final DateTimeFormatter pattern = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
     @FXML
     private TextField passportIdField;
@@ -34,9 +29,6 @@ public class SignUpController {
 
     @FXML
     private TextField numberOfRoomField;
-
-    @FXML
-    private TextField classOfRoomField;
 
     @FXML
     private TextField countOfPlacesField;
@@ -57,6 +49,18 @@ public class SignUpController {
     private TextArea settlementReasonsField;
 
     @FXML
+    private RadioButton economRadio;
+
+    @FXML
+    private ToggleGroup room;
+
+    @FXML
+    private RadioButton defaultRadio;
+
+    @FXML
+    private RadioButton luxRadio;
+
+    @FXML
     void initialize() {
         signUpButton.setOnAction(actionEvent -> {
 
@@ -74,7 +78,6 @@ public class SignUpController {
             int roomNumber = 0;
             String countOfPlaces = countOfPlacesField.getText();
             int count = 0;
-            String classOR = classOfRoomField.getText();
             ClassOfRoom classOfRoom = null;
             String settlementReasons = settlementReasonsField.getText();
             LocalDate dayOfBirth = null;
@@ -128,14 +131,12 @@ public class SignUpController {
                 roomNumber = Integer.parseInt(numberOfRoom);
             }
 
-            for (ClassOfRoom c : ClassOfRoom.values()) {
-                if (classOR.toLowerCase().equals(c.getNumberClass())) classOfRoom = c;
-            }
-
-            if (classOfRoom == null) {
-                add = false;
+            if (economRadio.isSelected()) {
+                classOfRoom = ClassOfRoom.ECONOM;
+            } else if (defaultRadio.isSelected()) {
+                classOfRoom = ClassOfRoom.DEFAULT;
             } else {
-                sb.append(i++).append(") Error in class of room. Should be econom, default or lux\n");
+                classOfRoom = ClassOfRoom.LUX;
             }
 
             if (!RegexCheck.checkCountOfPlaces(countOfPlaces)) {
@@ -161,7 +162,7 @@ public class SignUpController {
                 Collections.clientsObservableList.add(client);
                 signUpButton.getScene().getWindow().hide();
             } else {
-                Warning.showAlertWithHeaderText(sb.toString());
+                Warning.showErrorWithHeaderText(sb.toString());
             }
         });
 
