@@ -150,6 +150,7 @@ public class AppController {
             e.getTableView().getItems().get(e.getTablePosition().getRow()).getPerson().setPassportId(e.getNewValue());
         });
 
+        surnameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         surnameColumn.setOnEditCommit(e -> {
             e.getTableView().getItems().get(e.getTablePosition().getRow()).getPerson().setSurname(e.getNewValue());
         });
